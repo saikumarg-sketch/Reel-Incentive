@@ -531,7 +531,7 @@ const PreScreener = ({ onClose }) => {
   const [answers, setAnswers] = useState({});
 
   const questions = [
-    { id:'budget', label:'Total production budget (USD)', options:['< $500K','$500K – $5M','$5M – $25M','$25M – $100M','> $100M'] },
+    { id:'budget', label:'Total production budget (INR)', options:['< ₹4 Crore','₹4 Cr – ₹40 Cr','₹40 Cr – ₹200 Cr','₹200 Cr – ₹800 Cr','> ₹800 Crore'] },
     { id:'type', label:'Project type', options:['Feature Film','TV / Streaming Series','Documentary','Animation / VFX-heavy','Short Film'] },
     { id:'region', label:'Preferred shooting region', options:['Europe','Americas','Asia-Pacific','Africa','No preference'] },
     { id:'cultural', label:'Cultural test acceptable?', options:['Yes — willing to localize creative elements','No — purely a location shoot','Open to either'] },
@@ -551,7 +551,7 @@ const PreScreener = ({ onClose }) => {
     if (answers.payout === 'Need fast turnaround (cash rebate)') {
       candidates = candidates.filter((c) => /rebate|grant|reimbursement/i.test(c.type));
     }
-    if (answers.budget === '< $500K') {
+    if (answers.budget === '< ₹4 Crore') {
       candidates = candidates.filter((c) => !/€1M|US\$500,000|ZAR 12M|THB 50M|AU\$20M|NZ\$15M|\$25M/i.test(c.minSpend));
     }
     return candidates.sort((a, b) => b.headlineRate - a.headlineRate).slice(0, 5);
